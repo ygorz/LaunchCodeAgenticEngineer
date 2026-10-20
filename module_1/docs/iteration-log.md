@@ -50,6 +50,10 @@ Measurements:
 
 Pass/Fail: Fail
 
-Observations: The result matched Run 001: same scores, same failure cause, and both gates passed (no changes, nothing pushed). The findings overlapped heavily (ngrok buster source, unpinned versions, no .dockerignore) but were worded and grouped differently. This run also checked that the scripts pass `bash -n`, that the COPY files exist, and noted the folder isn't a git repo. Variance against Run 001: cycle time +9s, cost +$0.03, and review time about 30s shorter.
+Observations: The result matched Run 001: same scores, same failure cause, and both gates passed (no changes, nothing pushed). Findings overlapped heavily (ngrok buster source, unpinned versions, no .dockerignore) but were worded and grouped differently. This run also checked that the scripts pass `bash -n`, that the COPY files exist, and noted the folder isn't a git repo.
 
 Changes made: None. Second baseline run to measure variance.
+
+Variance Note (Run 001 vs Run 002):
+
+Rubric scores were identical across both runs (8/12, Fail, both gates passed). Cycle time differed by 9 seconds (1m37s vs 1m46s), which is normal variation for a run this short. Cost differed by $0.03 ($0.19 vs $0.22), even though output tokens were the same in both runs (~2.6k), so the difference likely comes from token pricing and caching rather than the agent doing more work. Findings overlapped heavily but were worded and grouped differently, and no dimension showed scoring instability. The agent's behavior on this task appears stable enough to use Run 001 as the authoritative baseline.
