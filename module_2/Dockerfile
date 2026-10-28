@@ -26,6 +26,12 @@ RUN npm install -g opencode-ai
 # Install MCP servers for Slack and Gmail
 RUN npm install -g @modelcontextprotocol/server-slack
 RUN npm install -g @gongrzhe/server-gmail-autoauth-mcp
+# The (archived) Gmail server pins googleapis 129, whose node-fetch 2 falsely
+# reports "Premature close" on current Node (socket guard added for
+# hackerone.com/reports/3582376). Newer googleapis uses Node's built-in fetch.
+RUN cd "$(npm root -g)/@gongrzhe/server-gmail-autoauth-mcp" \
+    && npm install --omit=dev --no-audit --no-fund \
+       googleapis@188 google-auth-library@11
 
 # Install ngrok
 RUN curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
