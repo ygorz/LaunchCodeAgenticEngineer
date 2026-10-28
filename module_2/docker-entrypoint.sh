@@ -21,7 +21,7 @@ claude mcp add slack \
   -e SLACK_TEAM_ID="$SLACK_TEAM_ID"
 
 claude mcp add gmail \
-  node /usr/local/lib/node_modules/@gongrzhe/server-gmail-autoauth-mcp/build/index.js
+  node /usr/local/lib/node_modules/@gongrzhe/server-gmail-autoauth-mcp/dist/index.js
 
 # Save the credential whenever it changes, so login survives any exit. Save
 # when the persisted copy is missing (first login) or older than the live one;
